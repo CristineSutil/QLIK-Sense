@@ -1,0 +1,63 @@
+QUESTÕES B03
+
+1.Insira os seguintes funcionários:
+
+RESPOSTA:
+INSERT INTO FUNCIONARIOS(Id_funcionario,Primeiro_nome,Ultimo_nome,Dt_admissao,Id_cargo,Id_departamento,Email,salario) VALUES (207,'Samuel','aRRUDA','10-05-14 ',60,'sarruda@emp.com.br',15411);
+
+2. Consulte os dados inseridos, consultando os funcionários com ID maior ou igual
+que 207;
+
+RESPOSTA:
+SELECT * FROM FUNCIONARIOS WHERE Id_funcionario>=207;
+
+3. Atualize os dados do funcionário ID 210:
+ULTIMO_NOME: ‘Guiddo’
+TELEFONE=7451-4474
+PCT_COMISSAO=.1
+
+RESPOSTA:
+UPDATE FUNCIONARIOS
+SET ULTIMO_NOME='Guiddo',
+TELEFONE='7451-4474',
+PCT_COMISSAO='0.1'
+WHERE Id_funcionario>=210;
+
+
+4. Consulte o funcionário modificado, pelo ID=210;
+SELECT * FROM FUNCIONARIOS WHERE Id_funcionario=210;
+
+5. Torne a inserção e atualização de dados permanente;
+COMMIT;
+
+6.Insira o seguinte registro:
+INSERT INTO FUNCIONARIOS(Id_funcionario,Primeiro_nome,Ultimo_nome,Dt_admissao,Id_cargo,Id_departamento,Email,salario) VALUES (...);
+
+
+7. Crie o SAVEPOINT T1;
+SAVEPOINT T1;
+
+8.Insira o seguinte registro:
+INSERT INTO FUNCIONARIOS(Id_funcionario,Primeiro_nome,Ultimo_nome,Dt_admissao,Id_cargo,Id_departamento,Email,salario) VALUES (...);
+
+7. Crie o SAVEPOINT T2;
+SAVEPOINT T2;
+
+10. Consulte os registros inseridos;
+SELECT * FROM FUNCIONARIOS WHERE Id_funcionario=212;
+SELECT * FROM FUNCIONARIOS WHERE Id_funcionario=213;
+
+11. Apague o funcionário ID 213;
+DELETE FROM FUNCIONARIOS WHERE Id_funcionario=213;
+
+12. Execute ROLLBACK TO T1;
+ROLLBACK TO SAVEPOINT T1
+
+13. Consulte novamente os registros inseridos;
+SELECT * FROM FUNCIONARIOS WHERE Id_funcionario=212;
+SELECT * FROM FUNCIONARIOS WHERE Id_funcionario=213;
+
+14. Confirme as modificações e Consulte os registros inseridos. 
+COMMTI;
+SELECT * FROM FUNCIONARIOS WHERE Id_funcionario=212;
+SELECT * FROM FUNCIONARIOS WHERE Id_funcionario=213;
